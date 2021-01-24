@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.jetpacknavigationlearning.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_receiverFragment"
+            app:destination="@id/receiverFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewTransactionFragment"
+            app:destination="@id/viewTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.example.jetpacknavigationlearning.ViewBalanceFragment"
+        android:label="ViewBalanceFragment" />
+    <fragment
+        android:id="@+id/receiverFragment"
+        android:name="com.example.jetpacknavigationlearning.ReceiverFragment"
+        android:label="ReceiverFragment">
+        <action
+            android:id="@+id/action_receiverFragment_to_sendCashFragment"
+            app:destination="@id/sendCashFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/viewTransactionFragment"
+        android:name="com.example.jetpacknavigationlearning.ViewTransactionFragment"
+        android:label="ViewTransactionFragment" />
+    <fragment
+        android:id="@+id/sendCashFragment"
+        android:name="com.example.jetpacknavigationlearning.SendCashFragment"
+        android:label="SendCashFragment">
+        <argument
+            android:name="receiverName"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_sendCashFragment_to_confirmDialogFragment"
+            app:destination="@id/confirmDialogFragment" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/confirmDialogFragment"
+        android:name="com.example.jetpacknavigationlearning.ConfirmDialogFragment"
+        android:label="ConfirmDialogFragment">
+        <argument
+            android:name="receiverName"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="long" />
+    </dialog>
+</navigation>
